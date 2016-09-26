@@ -443,32 +443,90 @@ struct ipv6_l3fwd_route {
 	uint8_t  if_out;
 };
 
+// MG-LPM v4 tests
+#define DEPTH4_TEST 24
+
+// MG-LPM v4 generating test FIBs
 static struct ipv4_l3fwd_route ipv4_l3fwd_route_array[] = {
-	{IPv4(1,1,1,0), 24, 0},
-	{IPv4(2,1,1,0), 24, 1},
-	{IPv4(3,1,1,0), 24, 2},
-	{IPv4(4,1,1,0), 24, 3},
-	{IPv4(5,1,1,0), 24, 4},
-	{IPv4(6,1,1,0), 24, 5},
-	{IPv4(7,1,1,0), 24, 6},
-	{IPv4(8,1,1,0), 24, 7},
+	{IPv4(1,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(2,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(3,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(4,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(5,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(6,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(7,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(8,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(9,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(10,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(11,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(12,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(13,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(14,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(15,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(16,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(17,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(18,1,1,0), DEPTH4_TEST, 1},
+	{IPv4(19,1,1,0), DEPTH4_TEST, 0},
+	{IPv4(20,1,1,0), DEPTH4_TEST, 1},
 };
 
+// MG-LPM v6 tests
+#define DEPTH_TEST 40
+
+// MG-LPM v6 generating test FIBs
 static struct ipv6_l3fwd_route ipv6_l3fwd_route_array[] = {
-	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 0},
-	{{2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 1},
-	{{3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 2},
-	{{4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 3},
-	{{5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 4},
-	{{6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 5},
-	{{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 6},
-	{{8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, 48, 7},
+	{{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{11,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{12,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{13,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{14,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{16,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{17,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{18,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+	{{19,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 0},
+	{{20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, DEPTH_TEST, 1},
+};
+
+// what to lookup in ipv6 implementation
+static uint8_t 	ipv6_lookup_ip_array[][RTE_LPM6_IPV6_ADDR_SIZE] = {
+	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{11,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{12,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{13,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{14,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{15,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{16,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{17,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{18,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{19,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+	{20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 };
 
 #define IPV4_L3FWD_NUM_ROUTES \
 	(sizeof(ipv4_l3fwd_route_array) / sizeof(ipv4_l3fwd_route_array[0]))
 #define IPV6_L3FWD_NUM_ROUTES \
 	(sizeof(ipv6_l3fwd_route_array) / sizeof(ipv6_l3fwd_route_array[0]))
+#define IPV6_LOOKUP_NUM_IPS \
+	(sizeof(ipv6_lookup_ip_array) / sizeof(ipv6_lookup_ip_array[0]))
 
 #define IPV4_L3FWD_LPM_MAX_RULES         1024
 #define IPV6_L3FWD_LPM_MAX_RULES         1024
@@ -706,6 +764,7 @@ get_ipv6_dst_port(void *ipv6_hdr,  uint8_t portid, lookup_struct_t * ipv6_l3fwd_
 #endif
 
 #if (APP_LOOKUP_METHOD == APP_LOOKUP_LPM)
+void setup_mg_lpm(int socketid);
 
 static inline uint8_t
 get_ipv4_dst_port(void *ipv4_hdr,  uint8_t portid, lookup_struct_t * ipv4_l3fwd_lookup_struct)
@@ -2570,6 +2629,383 @@ setup_lpm(int socketid)
 			ipv6_l3fwd_route_array[i].if_out);
 	}
 }
+
+void
+setup_mg_lpm(int socketid)
+{
+	struct rte_lpm6_config config;
+	unsigned i;
+	int ret, ret0, ret1, ret2, ret3, ret4, ret5, ret6, ret7, ret8, ret9, ret10, ret11, ret12, ret13, ret14, ret15, ret16, ret17, ret18, ret19;
+	char s[64];
+	uint64_t start_tsc, diff_tsc, end_tsc;
+	uint8_t next_hop0, next_hop1, next_hop2, next_hop3, next_hop4, next_hop5, next_hop6, next_hop7, next_hop8, 
+			next_hop9, next_hop10, next_hop11, next_hop12, next_hop13, next_hop14, next_hop15, next_hop16, next_hop17, next_hop18, next_hop19;
+	struct rte_lpm6* gr0;
+	struct rte_lpm6* gr1;
+	struct rte_lpm6* gr2;
+	struct rte_lpm6* gr3;
+	struct rte_lpm6* gr4;
+	struct rte_lpm6* gr5;
+	struct rte_lpm6* gr6;
+	struct rte_lpm6* gr7;
+
+	struct rte_lpm* lpm_gr0;
+	struct rte_lpm* lpm_gr1;
+	struct rte_lpm* lpm_gr2;
+	struct rte_lpm* lpm_gr3;
+	struct rte_lpm* lpm_gr4;
+	struct rte_lpm* lpm_gr5;
+	struct rte_lpm* lpm_gr6;
+	struct rte_lpm* lpm_gr7;
+	struct rte_lpm* lpm_gr8;
+	struct rte_lpm* lpm_gr9;
+	struct rte_lpm* lpm_gr10;
+	struct rte_lpm* lpm_gr11;
+	struct rte_lpm* lpm_gr12;
+	struct rte_lpm* lpm_gr13;
+	struct rte_lpm* lpm_gr14;
+	struct rte_lpm* lpm_gr15;
+	struct rte_lpm* lpm_gr16;
+	struct rte_lpm* lpm_gr17;
+	struct rte_lpm* lpm_gr18;
+	struct rte_lpm* lpm_gr19;
+
+	char s0[64];
+	char s1[64];
+	char s2[64];
+	char s3[64];
+	char s4[64];
+	char s5[64];
+	char s6[64];
+	char s7[64];
+	char s8[64];
+	char s9[64];
+	char s10[64];
+	char s11[64];
+	char s12[64];
+	char s13[64];
+	char s14[64];
+	char s15[64];
+	char s16[64];
+	char s17[64];
+	char s18[64];
+	char s19[64];
+
+	/* =========================== */
+	/* ====== MG-LPM v4 test ===== */
+	/* =========================== */
+
+	ret0 = ret1 = ret2 = ret3 = ret4 = ret5 = ret6 = ret7 = 0;
+	ret8 = ret9 = ret10 = ret11 = ret12 = ret13 = ret14 = ret15 = 0;
+	ret16 = ret17 = ret18 = ret19 = 0;
+
+	next_hop0 = next_hop1 = next_hop2 = next_hop3 = next_hop4 = next_hop5 = next_hop6 = next_hop7 = 0;
+	next_hop8 = next_hop9 = next_hop10 = next_hop11 = next_hop12 = next_hop13 = next_hop14 = next_hop15 = 0;
+	next_hop16 = next_hop17 = next_hop18 = next_hop19 = 0;
+
+	/* create several LPM tables */
+	snprintf(s0, sizeof(s0), "IPV4_L3FWD_LPM0_%d", socketid);
+	snprintf(s1, sizeof(s1), "IPV4_L3FWD_LPM1_%d", socketid);
+	snprintf(s2, sizeof(s2), "IPV4_L3FWD_LPM2_%d", socketid);
+	snprintf(s3, sizeof(s3), "IPV4_L3FWD_LPM3_%d", socketid);
+	snprintf(s4, sizeof(s4), "IPV4_L3FWD_LPM4_%d", socketid);
+	snprintf(s5, sizeof(s5), "IPV4_L3FWD_LPM5_%d", socketid);
+	snprintf(s6, sizeof(s6), "IPV4_L3FWD_LPM6_%d", socketid);
+	snprintf(s7, sizeof(s7), "IPV4_L3FWD_LPM7_%d", socketid);
+	snprintf(s8, sizeof(s8), "IPV4_L3FWD_LPM8_%d", socketid);
+	snprintf(s9, sizeof(s9), "IPV4_L3FWD_LPM9_%d", socketid);
+	snprintf(s10, sizeof(s10), "IPV4_L3FWD_LPM10_%d", socketid);
+	snprintf(s11, sizeof(s11), "IPV4_L3FWD_LPM11_%d", socketid);
+	snprintf(s12, sizeof(s12), "IPV4_L3FWD_LPM12_%d", socketid);
+	snprintf(s13, sizeof(s13), "IPV4_L3FWD_LPM13_%d", socketid);
+	snprintf(s14, sizeof(s14), "IPV4_L3FWD_LPM14_%d", socketid);
+	snprintf(s15, sizeof(s15), "IPV4_L3FWD_LPM15_%d", socketid);
+	snprintf(s16, sizeof(s16), "IPV4_L3FWD_LPM16_%d", socketid);
+	snprintf(s17, sizeof(s17), "IPV4_L3FWD_LPM17_%d", socketid);
+	snprintf(s18, sizeof(s18), "IPV4_L3FWD_LPM18_%d", socketid);
+	snprintf(s19, sizeof(s19), "IPV4_L3FWD_LPM19_%d", socketid);
+
+
+	lpm_gr0 = rte_lpm_create(s0, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr1 = rte_lpm_create(s1, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr2 = rte_lpm_create(s2, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr3 = rte_lpm_create(s3, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr4 = rte_lpm_create(s4, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr5 = rte_lpm_create(s5, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+	lpm_gr6 = rte_lpm_create(s6, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr7 = rte_lpm_create(s7, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr8 = rte_lpm_create(s8, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr9 = rte_lpm_create(s9, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr10 = rte_lpm_create(s10, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr11 = rte_lpm_create(s11, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr12 = rte_lpm_create(s12, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr13 = rte_lpm_create(s13, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr14 = rte_lpm_create(s14, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr15 = rte_lpm_create(s15, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr16 = rte_lpm_create(s16, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr17 = rte_lpm_create(s17, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr18 = rte_lpm_create(s18, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+    lpm_gr19 = rte_lpm_create(s19, socketid, IPV4_L3FWD_LPM_MAX_RULES, 0);
+
+
+	/* populate the LPM tables */
+	for (i = 0; i < IPV4_L3FWD_NUM_ROUTES; i++) {
+
+		/* skip unused ports */
+		if ((1 << ipv4_l3fwd_route_array[i].if_out &
+				enabled_port_mask) == 0)
+			continue;
+
+		ret = rte_lpm_add(lpm_gr0, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr1, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr2, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr3, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr4, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr5, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr6, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr7, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr8, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr9, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr10, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr11, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr12, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr13, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr14, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr15, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr16, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr17, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr18, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+		ret = rte_lpm_add(lpm_gr19, ipv4_l3fwd_route_array[i].ip, ipv4_l3fwd_route_array[i].depth, ipv4_l3fwd_route_array[i].if_out);
+
+
+		if (ret < 0) {
+			rte_exit(EXIT_FAILURE, "Unable to add entry %u to the "
+				"l3fwd LPM table on socket %d\n",
+				i, socketid);
+		}
+
+		printf("LPM: Adding route 0x%08x / %d (%d)\n",
+			(unsigned)ipv4_l3fwd_route_array[i].ip,
+			ipv4_l3fwd_route_array[i].depth,
+			ipv4_l3fwd_route_array[i].if_out);
+	}
+
+	// Measure cicles to pseudo paraller lookups
+	start_tsc = rte_rdtsc_precise();
+	ret0 = rte_lpm_lookup(lpm_gr0, ipv4_l3fwd_route_array[0].ip, &next_hop0);
+	ret1 = rte_lpm_lookup(lpm_gr1, ipv4_l3fwd_route_array[1].ip, &next_hop1);
+	ret2 = rte_lpm_lookup(lpm_gr2, ipv4_l3fwd_route_array[2].ip, &next_hop2);
+	ret3 = rte_lpm_lookup(lpm_gr3, ipv4_l3fwd_route_array[3].ip, &next_hop3);
+	ret4 = rte_lpm_lookup(lpm_gr4, ipv4_l3fwd_route_array[4].ip, &next_hop4);
+	ret5 = rte_lpm_lookup(lpm_gr5, ipv4_l3fwd_route_array[5].ip, &next_hop5);
+	ret6 = rte_lpm_lookup(lpm_gr6, ipv4_l3fwd_route_array[6].ip, &next_hop6);
+	ret7 = rte_lpm_lookup(lpm_gr7, ipv4_l3fwd_route_array[7].ip, &next_hop7);
+	ret8 = rte_lpm_lookup(lpm_gr8, ipv4_l3fwd_route_array[8].ip, &next_hop8);
+	ret9 = rte_lpm_lookup(lpm_gr9, ipv4_l3fwd_route_array[9].ip, &next_hop9);
+	ret10 = rte_lpm_lookup(lpm_gr10, ipv4_l3fwd_route_array[10].ip, &next_hop10);
+	ret11 = rte_lpm_lookup(lpm_gr11, ipv4_l3fwd_route_array[11].ip, &next_hop11);
+	ret12 = rte_lpm_lookup(lpm_gr12, ipv4_l3fwd_route_array[12].ip, &next_hop12);
+	ret13 = rte_lpm_lookup(lpm_gr13, ipv4_l3fwd_route_array[13].ip, &next_hop13);
+	ret14 = rte_lpm_lookup(lpm_gr14, ipv4_l3fwd_route_array[14].ip, &next_hop14);
+	ret15 = rte_lpm_lookup(lpm_gr15, ipv4_l3fwd_route_array[15].ip, &next_hop15);
+	ret16 = rte_lpm_lookup(lpm_gr16, ipv4_l3fwd_route_array[16].ip, &next_hop16);
+	ret17 = rte_lpm_lookup(lpm_gr17, ipv4_l3fwd_route_array[17].ip, &next_hop17);
+	ret18 = rte_lpm_lookup(lpm_gr18, ipv4_l3fwd_route_array[18].ip, &next_hop18);
+	ret19 = rte_lpm_lookup(lpm_gr19, ipv4_l3fwd_route_array[19].ip, &next_hop19);
+	end_tsc = rte_rdtsc_precise();
+
+	diff_tsc = end_tsc - start_tsc;
+	printf("tsc to fast ipv4 lookup = %" PRIu64 " cycles\n", diff_tsc);
+	printf("time to fast ipv4 lookup = %fs, %fus \n", (double) diff_tsc / rte_get_tsc_hz(), (double) diff_tsc / rte_get_tsc_hz() * US_PER_S);
+
+	if (ret0 < 0 || ret1 < 0 || ret2 < 0 || ret3 < 0 || ret4 < 0 || ret5 < 0 || ret6 < 0 || ret7 < 0 ||
+		ret8 < 0 || ret9 < 0 || ret10 < 0 || ret11 < 0 || ret12 < 0 || ret13 < 0 || ret14 < 0 || ret15 < 0 ||
+		ret16 < 0 || ret17 < 0 || ret18 < 0 || ret19 < 0) {
+		rte_exit(EXIT_FAILURE, "Unable to lookup entry %u to the "
+			"l3fwd LPM IPv4 table on socket %d\n",
+			i, socketid);
+	}
+
+	printf("LPM: Lookup %s results %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		next_hop0, next_hop1, next_hop2, next_hop3, next_hop4, next_hop5, next_hop6, next_hop7);
+
+	printf("LPM: Lookup %s results %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		next_hop8, next_hop9, next_hop10, next_hop11, next_hop12, next_hop13, next_hop14, next_hop15);
+
+	printf("LPM: Lookup %s results %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		next_hop16, next_hop17, next_hop18, next_hop19);
+
+	printf("LPM: Lookup %s steps %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		ret0, ret1, ret2, ret3, ret4, ret5, ret6, ret7);
+
+	printf("LPM: Lookup %s steps %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		ret8, ret9, ret10, ret11, ret12, ret13, ret14, ret15);
+
+	printf("LPM: Lookup %s steps %hhu, %hhu, %hhu, %hhu\n",
+		"IPV4",
+		ret16, ret17, ret18, ret19);
+
+
+	/* =========================== */
+	/* ====== MG-LPM v6 test ===== */
+	/* =========================== */
+
+	/* create the LPM6 table */
+	snprintf(s, sizeof(s), "IPV6_L3FWD_KLPM_%d", socketid);
+
+	config.max_rules = IPV6_L3FWD_LPM_MAX_RULES;
+	config.number_tbl8s = IPV6_L3FWD_LPM_NUMBER_TBL8S;
+	config.flags = 0;
+	ipv6_l3fwd_lookup_struct[socketid] = rte_lpm6_create(s, socketid,
+				&config);
+	if (ipv6_l3fwd_lookup_struct[socketid] == NULL)
+		rte_exit(EXIT_FAILURE, "Unable to create the l3fwd LPM table"
+				" on socket %d\n", socketid);
+
+
+	printf("***  POPULATE  THE  LPM6  TABLE  ***\n");
+	/* populate the LPM table */
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+
+		/* skip unused ports */
+		if ((1 << ipv6_l3fwd_route_array[i].if_out &
+				enabled_port_mask) == 0)
+			continue;
+
+		start_tsc = rte_get_tsc_cycles();
+		ret = rte_lpm6_add(ipv6_l3fwd_lookup_struct[socketid],
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+		end_tsc = rte_get_tsc_cycles();
+
+		diff_tsc = end_tsc - start_tsc;
+		printf("tsc to add one entry in DPDK LPM implementation = %" PRIu64 "\n", diff_tsc);
+		printf("time to add one entry in DPDK LPM implementation = %fs, %fus \n", (double) diff_tsc / rte_get_tsc_hz(), (double) diff_tsc / rte_get_tsc_hz() * US_PER_S);
+		if (ret < 0) {
+			rte_exit(EXIT_FAILURE, "Unable to add entry %u to the "
+				"l3fwd LPM table on socket %d\n",
+				i, socketid);
+		}
+
+		printf("LPM: Adding route %s / %d (%d)\n",
+			"IPV6",
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+
+
+	// Creating multiple MG-LPM groups
+	gr0 = rte_lpm6_create(s, socketid, &config);
+	gr1 = rte_lpm6_create(s, socketid, &config);
+	gr2 = rte_lpm6_create(s, socketid, &config);
+	gr3 = rte_lpm6_create(s, socketid, &config);
+	gr4 = rte_lpm6_create(s, socketid, &config);
+	gr5 = rte_lpm6_create(s, socketid, &config);
+	gr6 = rte_lpm6_create(s, socketid, &config);
+	gr7 = rte_lpm6_create(s, socketid, &config);
+
+	// Populating  FIB in MG-LPM groups
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr0,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr1,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr2,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr3,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr4,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr5,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr6,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+	for (i = 0; i < IPV6_L3FWD_NUM_ROUTES; i++) {
+		ret = rte_lpm6_add(gr7,
+			ipv6_l3fwd_route_array[i].ip,
+			ipv6_l3fwd_route_array[i].depth,
+			ipv6_l3fwd_route_array[i].if_out);
+	}
+
+
+	// Measure lookup times for IPv6 case
+	printf("\n");
+	printf("***  LOOKUP  IN ONE TIME LPM6  TABLE  ***\n");
+
+	start_tsc = rte_rdtsc_precise();
+	ret0 = rte_lpm6_lookup(gr0, ipv6_lookup_ip_array[5], &next_hop0);
+	ret1 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[1], &next_hop1);
+	ret2 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[2], &next_hop2);
+	ret3 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[3], &next_hop3);
+	ret4 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[4], &next_hop4);
+	ret5 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[5], &next_hop5);
+	ret6 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[6], &next_hop6);
+	ret7 = rte_lpm6_lookup(ipv6_l3fwd_lookup_struct[socketid], ipv6_lookup_ip_array[7], &next_hop7);
+	ret0 = rte_lpm6_lookup(gr0, ipv6_lookup_ip_array[0], &next_hop0);
+	ret1 = rte_lpm6_lookup(gr1, ipv6_lookup_ip_array[1], &next_hop1);
+	ret2 = rte_lpm6_lookup(gr2, ipv6_lookup_ip_array[2], &next_hop2);
+	ret3 = rte_lpm6_lookup(gr3, ipv6_lookup_ip_array[3], &next_hop3);
+	ret4 = rte_lpm6_lookup(gr4, ipv6_lookup_ip_array[4], &next_hop4);
+	ret5 = rte_lpm6_lookup(gr5, ipv6_lookup_ip_array[5], &next_hop5);
+	ret6 = rte_lpm6_lookup(gr6, ipv6_lookup_ip_array[6], &next_hop6);
+	ret7 = rte_lpm6_lookup(gr7, ipv6_lookup_ip_array[7], &next_hop7);
+
+	end_tsc = rte_rdtsc_precise();
+
+	diff_tsc = end_tsc - start_tsc;
+	printf("tsc to fast lookup entries = %" PRIu64 " cycles\n", diff_tsc);
+	printf("time to fast lookup entries = %fs, %fus \n", (double) diff_tsc / rte_get_tsc_hz(), (double) diff_tsc / rte_get_tsc_hz() * US_PER_S);
+	
+	if (ret0 < 0 || ret1 < 0 || ret2 < 0 || ret3 < 0 || ret4 < 0 || ret5 < 0 || ret6 < 0 || ret7 < 0) {
+		rte_exit(EXIT_FAILURE, "Unable to lookup entry %u to the "
+			"l3fwd LPM table on socket %d\n",
+			i, socketid);
+	}
+
+	printf("LPM: Lookup %s results %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV6",
+		next_hop0, next_hop1, next_hop2, next_hop3, next_hop4, next_hop5, next_hop6, next_hop7);
+
+	printf("LPM: Lookup %s steps %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu, %hhu\n",
+		"IPV6",
+		ret0, ret1, ret2, ret3, ret4, ret5, ret6, ret7);
+
+	printf("tsc to add entry = %" PRIu64 "\n", rte_get_tsc_hz());
+
+}
 #endif
 
 static int
@@ -2606,7 +3042,9 @@ init_mem(unsigned nb_mbuf)
 				printf("Allocated mbuf pool on socket %d\n", socketid);
 
 #if (APP_LOOKUP_METHOD == APP_LOOKUP_LPM)
-			setup_lpm(socketid);
+			printf("LPM MG-LPM EXPERIMENTS\n");
+			setup_mg_lpm(socketid);
+//			setup_lpm(socketid);
 #else
 			setup_hash(socketid);
 #endif
@@ -2846,6 +3284,8 @@ main(int argc, char **argv)
 	}
 
 	check_all_ports_link_status((uint8_t)nb_ports, enabled_port_mask);
+
+    rte_exit(EXIT_FAILURE, "STOP EXECUTION DUE TO MG-LPM EXPERIMENT\n");
 
 	/* launch per-lcore init on every lcore */
 	rte_eal_mp_remote_launch(main_loop, NULL, CALL_MASTER);
